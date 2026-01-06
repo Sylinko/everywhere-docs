@@ -1,0 +1,55 @@
+---
+title: OpenAI
+description: 从 OpenAI 获取 API Key
+---
+
+import { HorizontalImg } from '@/components/HorizontalImg';
+
+本教程将一步步指导您如何获取 [OpenAI](https://openai.com) 的 API 密钥。
+
+<Callout type="warning">
+OpenAI 目前仅支持部分国家和地区访问，若您所在地区不受支持，建议使用其他模型提供商。
+
+请注意，订阅 ChatGPT Plus, Team 或 Pro 等付费计划，与 API 服务是分开计费的。您仍然可能需要为 API 使用单独付费。
+</Callout>
+
+## 准备
+
+- 一个用于注册账户的有效电子邮件地址
+- 一个用于账户安全验证的国际手机号码
+- 如果需要体验 OpenAI API 的付费服务，您还需要一张有效的国际信用卡
+
+## 步骤
+
+- 使用您准备的电子邮件地址和手机号码[注册 OpenAI 账户](https://platform.openai.com/signup)
+- 登录后，访问[API 密钥页面](https://platform.openai.com/api-keys)，点击`"Create new secret key"`按钮
+
+<HorizontalImg
+    src="/model-provider/openai/create-new-secret-key.webp"
+    alt="Create new secret key"
+    width="600px"
+  />
+
+- 在弹出的对话框中，推荐在`Name`输入框内输入一个描述性的名称（例如：`"Everywhere API Key"`），然后点击`"Create secret key"`按钮
+
+<HorizontalImg
+    src="/model-provider/openai/create-new-secret-key-form.webp"
+    alt="Create new secret key form"
+    width="450px"
+  />
+
+- 成功创建后，您将看到一个 API 密钥，将该密钥复制到 Everywhere 内继续即可。
+
+<HorizontalImg
+    src="/model-provider/openai/save-your-key.webp"
+    alt="Save your key"
+    width="450px"
+  />
+
+<Callout type="warning">
+请务必将 API 密钥妥善保存，因为它只会显示一次。如果您不小心关闭了对话框，可以在 API 密钥页面重新生成一个新的密钥，并删除您忘记保存的旧密钥。
+</Callout>
+
+<Callout type="error">
+请注意，API 密钥是敏感信息，请不要将其泄露给任何人或在公共场合分享。
+</Callout>

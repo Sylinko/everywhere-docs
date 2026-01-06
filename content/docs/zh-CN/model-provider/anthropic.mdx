@@ -1,0 +1,59 @@
+---
+title: Anthropic (Claude)
+description: 从 Anthropic Claude 获取 API Key
+---
+
+import { HorizontalImg } from '@/components/HorizontalImg';
+
+本教程将一步步指导您如何获取 [Anthropic Claude](https://www.anthropic.com/) 的 API 密钥。
+
+<Callout type="warning">
+Anthropic Claude 目前仅支持部分国家和地区的手机号注册，若您所在地区不受支持，建议使用其他模型提供商。
+
+请注意，订阅 Claude Pro 或 Max 等付费计划，与 API 服务是分开计费的。您仍然可能需要为 API 使用单独付费。
+</Callout>
+
+## 准备
+
+- 一个[受支持地区](https://www.anthropic.com/supported-countries)的手机号
+
+## 步骤
+
+- 访问[Claude Console](https://console.anthropic.com/login)，并登录账户。
+
+<HorizontalImg
+    src="/model-provider/anthropic/login.webp"
+    alt="Login"
+    width="500px"
+  />
+
+- 登录后，在页面左方点击`API keys`。
+
+<HorizontalImg
+    src="/model-provider/anthropic/api-key.webp"
+    alt="API keys 页面"
+  />
+
+- 在页面右侧点击`Create Key`以创建 API 密钥，在下方输入框填写密钥的名称以帮您记住它的用途。
+
+<HorizontalImg
+    src="/model-provider/anthropic/create-api-key.webp"
+    alt="创建 API 密钥"
+    width="400px"
+  />
+
+- 点击`Add`创建后，会显示您的 API 密钥，复制到 Everywhere 继续。
+
+<HorizontalImg
+    src="/model-provider/anthropic/save-api-key.webp"
+    alt="保存 API 密钥"
+    width="400px"
+  />
+
+<Callout type="warning">
+请务必将 API 密钥妥善保存，因为它只会显示一次。如果您不小心关闭了对话框，可以在 API 密钥页面重新生成一个新的密钥，并删除您忘记保存的旧密钥。
+</Callout>
+
+<Callout type="error">
+请注意，API 密钥是敏感信息，请不要将其泄露给任何人或在公共场合分享。
+</Callout>
