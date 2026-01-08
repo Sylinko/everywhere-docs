@@ -324,9 +324,11 @@ export function Footer({ lang }: FooterProps) {
               {legalLinks.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.external ? link.href : getLocalePath(lang, link.href)}
-                    target={link.external ? "_blank" : undefined}
-                    rel={link.external ? "noopener noreferrer" : undefined}
+                    href={
+                      link.external ? link.href : getLocalePath(lang, link.href)
+                    }
+                    target={link.external ? '_blank' : undefined}
+                    rel={link.external ? 'noopener noreferrer' : undefined}
                     className="text-fd-muted-foreground hover:text-fd-foreground text-sm transition-colors"
                   >
                     {t.sections.legalAndPolicies[link.key]}

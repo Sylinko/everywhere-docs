@@ -14,53 +14,73 @@ interface OSInfo {
   link: string;
 }
 
-export function DownloadAutoDetect({ 
-  dictionary 
-}: { 
+export function DownloadAutoDetect({
+  dictionary,
+}: {
   dictionary: {
     downloadFor: string;
     loading: string;
     otherVersions: string;
-  }
+  };
 }) {
   const [os, setOs] = useState<OSInfo | null>(null);
 
   useEffect(() => {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    
+
     if (userAgent.indexOf('win') !== -1) {
-      setOs({ id: 'windows', name: 'Windows', icon: WindowsIcon, link: 'https://ghproxy.sylinko.com/download?product=everywhere&os=win-x64&type=setup&version=latest' });
+      setOs({
+        id: 'windows',
+        name: 'Windows',
+        icon: WindowsIcon,
+        link: 'https://ghproxy.sylinko.com/download?product=everywhere&os=win-x64&type=setup&version=latest',
+      });
     } else if (userAgent.indexOf('mac') !== -1) {
-      setOs({ id: 'macos', name: 'macOS', icon: AppleIcon, link: 'https://github.com/DearVa/Everywhere/releases' });
-    } else if (userAgent.indexOf('linux') !== -1 || userAgent.indexOf('x11') !== -1) {
-      setOs({ id: 'linux', name: 'Linux', icon: LinuxIcon, link: 'https://github.com/DearVa/Everywhere/releases' });
+      setOs({
+        id: 'macos',
+        name: 'macOS',
+        icon: AppleIcon,
+        link: 'https://github.com/DearVa/Everywhere/releases',
+      });
+    } else if (
+      userAgent.indexOf('linux') !== -1 ||
+      userAgent.indexOf('x11') !== -1
+    ) {
+      setOs({
+        id: 'linux',
+        name: 'Linux',
+        icon: LinuxIcon,
+        link: 'https://github.com/DearVa/Everywhere/releases',
+      });
     }
   }, []);
 
   if (!os) {
     return (
       <div className="flex h-24 items-center justify-center">
-        <span className="text-muted-foreground animate-pulse">{dictionary.loading}</span>
+        <span className="text-muted-foreground animate-pulse">
+          {dictionary.loading}
+        </span>
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="animate-in fade-in slide-in-from-bottom-4 flex flex-col items-center gap-6 duration-700">
       <div className="flex flex-col items-center gap-2">
-      <Link
-        href={os.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(
-          buttonVariants({ size: 'lg' }),
-          'h-14 px-8 text-lg gap-3 rounded-full'
-        )}
-      >
-        { os.icon }
-        {dictionary.downloadFor.replace('{os}', os.name)}
-        <Download className="size-5" />
-      </Link>
+        <Link
+          href={os.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={cn(
+            buttonVariants({ size: 'lg' }),
+            'h-14 gap-3 rounded-full px-8 text-lg'
+          )}
+        >
+          {os.icon}
+          {dictionary.downloadFor.replace('{os}', os.name)}
+          <Download className="size-5" />
+        </Link>
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ import {
   DocsDescription,
   DocsPage,
   DocsTitle,
-  PageLastUpdate
+  PageLastUpdate,
 } from 'fumadocs-ui/page';
 
 export default async function Page(props: {

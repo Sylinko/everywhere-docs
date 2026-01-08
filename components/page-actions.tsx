@@ -42,7 +42,8 @@ export function LLMCopyButton({
   lang: string;
 }) {
   const [isLoading, setLoading] = useState(false);
-  const t = translations[lang as keyof typeof translations] || translations['en-US'];
+  const t =
+    translations[lang as keyof typeof translations] || translations['en-US'];
 
   const [checked, onClick] = useCopyButton(async () => {
     const cached = cache.get(markdownUrl);
@@ -72,7 +73,7 @@ export function LLMCopyButton({
         buttonVariants({
           variant: 'secondary',
           size: 'sm',
-          className: '[&_svg]:text-fd-muted-foreground gap-2 [&_svg]:size-3.5'
+          className: '[&_svg]:text-fd-muted-foreground gap-2 [&_svg]:size-3.5',
         })
       )}
       onClick={onClick}
@@ -96,7 +97,8 @@ export function ViewOptions({
   githubUrl: string;
   lang: string;
 }) {
-  const t = translations[lang as keyof typeof translations] || translations['en-US'];
+  const t =
+    translations[lang as keyof typeof translations] || translations['en-US'];
 
   const items = useMemo(() => {
     const fullMarkdownUrl =

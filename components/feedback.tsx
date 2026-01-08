@@ -61,7 +61,7 @@ const translations = {
     submitAgain: '重新提交',
     placeholder: '请留下您的反馈...',
     submit: '提交',
-  }
+  },
 };
 
 export function Feedback({ lang, onRateAction }: FeedbackProps) {

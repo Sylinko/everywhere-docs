@@ -4,7 +4,11 @@ import { useEffect, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
-import { buttonVariants, cardVariants, headingVariants } from '@/components/variants';
+import {
+  buttonVariants,
+  cardVariants,
+  headingVariants,
+} from '@/components/variants';
 import Link from 'next/link';
 import { cn } from '@/lib/cn';
 import { Monitor, Layers, Laptop, Box, ArrowRight } from 'lucide-react';

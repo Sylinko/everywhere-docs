@@ -4,7 +4,7 @@ import {
   DocsDescription,
   DocsPage,
   DocsTitle,
-  PageLastUpdate
+  PageLastUpdate,
 } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
 import { Feedback } from '@/components/feedback';

@@ -22,7 +22,7 @@ export const buttonVariants = cva(
         'icon-xs': 'p-1 [&_svg]:size-4',
       },
     },
-  },
+  }
 );
 
 export type ButtonProps = VariantProps<typeof buttonVariants>;

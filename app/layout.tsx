@@ -25,9 +25,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
         <meta charSet="utf-8" />
       </head>
       <body>
-        <RootProvider>
-          {children}
-        </RootProvider>
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );

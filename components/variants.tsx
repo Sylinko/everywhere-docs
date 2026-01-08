@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { cva } from 'class-variance-authority';
 
 export const headingVariants = cva('font-medium tracking-tight', {
   variants: {
@@ -35,18 +35,20 @@ export const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  },
+  }
 );
 
-
-export const cardVariants = cva('rounded-2xl text-sm p-6 bg-origin-border shadow-lg', {
-  variants: {
-    variant: {
-      secondary: 'bg-brand-secondary text-brand-secondary-foreground',
-      default: 'border bg-fd-card',
+export const cardVariants = cva(
+  'rounded-2xl text-sm p-6 bg-origin-border shadow-lg',
+  {
+    variants: {
+      variant: {
+        secondary: 'bg-brand-secondary text-brand-secondary-foreground',
+        default: 'border bg-fd-card',
+      },
     },
-  },
-  defaultVariants: {
-    variant: 'default',
-  },
-});
+    defaultVariants: {
+      variant: 'default',
+    },
+  }
+);
