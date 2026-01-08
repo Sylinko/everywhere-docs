@@ -26,33 +26,37 @@ export function DownloadAutoDetect({
   const [os, setOs] = useState<OSInfo | null>(null);
 
   useEffect(() => {
-    const userAgent = window.navigator.userAgent.toLowerCase();
+    const t = setTimeout(() => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
 
-    if (userAgent.indexOf('win') !== -1) {
-      setOs({
-        id: 'windows',
-        name: 'Windows',
-        icon: WindowsIcon,
-        link: 'https://ghproxy.sylinko.com/download?product=everywhere&os=win-x64&type=setup&version=latest',
-      });
-    } else if (userAgent.indexOf('mac') !== -1) {
-      setOs({
-        id: 'macos',
-        name: 'macOS',
-        icon: AppleIcon,
-        link: 'https://github.com/DearVa/Everywhere/releases',
-      });
-    } else if (
-      userAgent.indexOf('linux') !== -1 ||
-      userAgent.indexOf('x11') !== -1
-    ) {
-      setOs({
-        id: 'linux',
-        name: 'Linux',
-        icon: LinuxIcon,
-        link: 'https://github.com/DearVa/Everywhere/releases',
-      });
-    }
+      if (userAgent.indexOf('win') !== -1) {
+        setOs({
+          id: 'windows',
+          name: 'Windows',
+          icon: WindowsIcon,
+          link: 'https://ghproxy.sylinko.com/download?product=everywhere&os=win-x64&type=setup&version=latest',
+        });
+      } else if (userAgent.indexOf('mac') !== -1) {
+        setOs({
+          id: 'macos',
+          name: 'macOS',
+          icon: AppleIcon,
+          link: 'https://github.com/DearVa/Everywhere/releases',
+        });
+      } else if (
+        userAgent.indexOf('linux') !== -1 ||
+        userAgent.indexOf('x11') !== -1
+      ) {
+        setOs({
+          id: 'linux',
+          name: 'Linux',
+          icon: LinuxIcon,
+          link: 'https://github.com/DearVa/Everywhere/releases',
+        });
+      }
+    }, 0);
+
+    return () => clearTimeout(t);
   }, []);
 
   if (!os) {

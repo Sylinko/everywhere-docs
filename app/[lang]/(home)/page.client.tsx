@@ -113,8 +113,11 @@ export function Hero() {
   );
 
   useEffect(() => {
-    setMounted(true);
-    setProfile(detectShaderProfile());
+    const t = setTimeout(() => {
+      setMounted(true);
+      setProfile(detectShaderProfile());
+    }, 0);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {

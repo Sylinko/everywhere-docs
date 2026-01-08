@@ -71,13 +71,18 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
   const [message, setMessage] = useState('');
   const [isPending, startTransition] = useTransition();
 
-  const t = translations[lang as keyof typeof translations] || translations.en;
+  const t = translations[lang as keyof typeof translations] || translations['en-US'];
 
   useEffect(() => {
     const item = localStorage.getItem(`docs-feedback-${url}`);
 
     if (item === null) return;
-    setPrevious(JSON.parse(item) as Result);
+
+    const t = setTimeout(() => {
+      setPrevious(JSON.parse(item) as Result);
+    }, 0);
+
+    return () => clearTimeout(t);
   }, [url]);
 
   useEffect(() => {
