@@ -230,8 +230,8 @@ export default async function Page({
 
               <div className="relative mt-auto">
                 {platform.comingSoon && (
-                  <div className="bg-background/50 absolute inset-0 flex items-center justify-center backdrop-blur-[1px]">
-                    <span className="text-md text-foreground bg-background/80 px-3 py-1 font-medium shadow-sm">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-md text-foreground font-medium">
                       {content.comingSoon}
                     </span>
                   </div>

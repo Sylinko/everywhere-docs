@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useTheme } from 'next-themes';
 import Image from 'next/image';
@@ -14,26 +14,20 @@ import { cn } from '@/lib/cn';
 import { Monitor, Layers, Laptop, Box, ArrowRight } from 'lucide-react';
 import { getLocalePath } from '@/lib/i18n';
 
-const GrainGradient = dynamic(
-  () => import('@paper-design/shaders-react').then((m) => m.GrainGradient),
+const FluidMaskedGradient = dynamic(
+  () => import('@/components/shader').then((m) => m.FluidMaskedGradient),
   { ssr: false }
 );
 
 type ShaderProfile = {
   delayMs: number;
   idleTimeoutMs: number;
-  softness: number;
-  intensity: number;
-  noise: number;
   reduceMotion: boolean;
 };
 
 const DEFAULT_SHADER_PROFILE: ShaderProfile = {
   delayMs: 500,
   idleTimeoutMs: 1200,
-  softness: 1,
-  intensity: 0.85,
-  noise: 0.45,
   reduceMotion: false,
 };
 
@@ -67,9 +61,6 @@ function detectShaderProfile(): ShaderProfile {
     return {
       delayMs: 350,
       idleTimeoutMs: 1200,
-      softness: 1,
-      intensity: 0.55,
-      noise: 0.22,
       reduceMotion: true,
     };
   }
@@ -78,9 +69,6 @@ function detectShaderProfile(): ShaderProfile {
     return {
       delayMs: 550,
       idleTimeoutMs: 1600,
-      softness: 1,
-      intensity: 0.7,
-      noise: 0.28,
       reduceMotion: false,
     };
   }
@@ -88,9 +76,6 @@ function detectShaderProfile(): ShaderProfile {
   return {
     delayMs: 250,
     idleTimeoutMs: 1000,
-    softness: 1,
-    intensity: 0.9,
-    noise: 0.5,
     reduceMotion: false,
   };
 }
@@ -103,14 +88,6 @@ export function Hero() {
   const [mounted, setMounted] = useState(false);
   // Avoid hydration mismatch: the first client render must match SSR output.
   const [profile, setProfile] = useState<ShaderProfile>(DEFAULT_SHADER_PROFILE);
-
-  const shaderColors = useMemo(
-    () =>
-      resolvedTheme === 'dark'
-        ? ['#06B6D4', '#8B5CF6', '#EC4899', '#1E3A8A00']
-        : ['#22D3EE', '#A78BFA', '#F9A8D4', '#DBEAFE20'],
-    [resolvedTheme]
-  );
 
   useEffect(() => {
     const t = setTimeout(() => {
@@ -169,17 +146,13 @@ export function Hero() {
       />
 
       {showShaders && (
-        <GrainGradient
+        <FluidMaskedGradient
           className={cn(
-            'absolute inset-0 duration-800',
-            profile.reduceMotion ? 'animate-none' : 'animate-fd-fade-in'
+            'absolute inset-0 animate-fd-fade-in',
           )}
-          colors={shaderColors}
-          colorBack="#00000000"
-          softness={profile.softness}
-          intensity={profile.intensity}
-          noise={profile.noise}
-          shape="corners"
+          colors={resolvedTheme === 'dark' ? 
+            ["#3183c6", "#cfc984", "#c12a8c"] : 
+            ["#74b8ef", "#edeac7", "#eb65bc"]}
         />
       )}
 
