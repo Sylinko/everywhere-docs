@@ -154,13 +154,13 @@ export default async function Layout({
             url: getLocalePath(lang, 'download'),
             icon: <Download />,
           },
-          {
-            type: 'main',
-            on: 'menu',
-            text: texts.pricing.text,
-            url: getLocalePath(lang, 'pricing'),
-            icon: <Gem />,
-          },
+          // {
+          //   type: 'main',
+          //   on: 'menu',
+          //   text: texts.pricing.text,
+          //   url: getLocalePath(lang, 'pricing'),
+          //   icon: <Gem />,
+          // },
           {
             type: 'main',
             on: 'menu',
@@ -221,13 +221,13 @@ export default async function Layout({
             url: getLocalePath(lang, 'download'),
             icon: <Download />,
           },
-          {
-            type: 'main',
-            on: 'nav',
-            text: texts.pricing.text,
-            url: getLocalePath(lang, 'pricing'),
-            icon: <Gem />,
-          },
+          // {
+          //   type: 'main',
+          //   on: 'nav',
+          //   text: texts.pricing.text,
+          //   url: getLocalePath(lang, 'pricing'),
+          //   icon: <Gem />,
+          // },
           {
             type: 'main',
             on: 'nav',

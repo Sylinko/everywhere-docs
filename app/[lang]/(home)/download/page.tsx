@@ -162,7 +162,7 @@ export default async function Page({
       name: 'macOS',
       data: content.macos,
       link: 'https://github.com/DearVa/Everywhere/releases',
-      comingSoon: false,
+      comingSoon: true,
     },
     {
       id: 'linux',

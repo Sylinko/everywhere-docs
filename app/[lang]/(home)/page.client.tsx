@@ -178,7 +178,7 @@ export function Hero() {
         </div>
       )}
 
-      {mounted && (
+      {/* {mounted && (
         <Image
           src={
             resolvedTheme === 'dark'
@@ -198,7 +198,7 @@ export function Hero() {
           fetchPriority="low"
           sizes="(min-width: 1024px) 1200px, 100vw"
         />
-      )}
+      )} */}
     </>
   );
 }
