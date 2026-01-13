@@ -4,12 +4,12 @@
   "icon": "Atom",
   "root": true,
   "pages": [
-    "index", 
-    "contributor", 
-    "roadmap", 
+    "index",
+    "contributor",
+    "roadmap",
     "support",
-    "external:[Contributing](https://github.com/DearVa/Everywhere/blob/main/.github/CONTRIBUTING.md)", 
-    "external:[Security Report](https://github.com/DearVa/Everywhere/blob/main/.github/SECURITY.md)", 
+    "external:[Contributing](https://github.com/DearVa/Everywhere/blob/main/.github/CONTRIBUTING.md)",
+    "external:[Security Report](https://github.com/DearVa/Everywhere/blob/main/.github/SECURITY.md)",
     "external:[Code of Conduct](https://github.com/DearVa/Everywhere/blob/main/.github/CODE_OF_CONDUCT.md)"
   ]
 }

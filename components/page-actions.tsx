@@ -1,11 +1,6 @@
 'use client';
 import { useMemo, useState } from 'react';
-import {
-  Check,
-  ChevronDown,
-  Copy,
-  ExternalLinkIcon,
-} from 'lucide-react';
+import { Check, ChevronDown, Copy, ExternalLinkIcon } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
 import { buttonVariants } from '@/components/variants';
@@ -15,6 +10,7 @@ import {
   PopoverTrigger,
 } from 'fumadocs-ui/components/ui/popover';
 import { cva } from 'class-variance-authority';
+import Link from 'next/link';
 
 const cache = new Map<string, string>();
 
@@ -171,7 +167,7 @@ export function ViewOptions({
       </PopoverTrigger>
       <PopoverContent className="flex flex-col">
         {items.map((item) => (
-          <a
+          <Link
             key={item.href}
             href={item.href}
             rel="noreferrer noopener"
@@ -181,7 +177,7 @@ export function ViewOptions({
             {item.icon}
             {item.title}
             <ExternalLinkIcon className="text-fd-muted-foreground ms-auto size-3.5" />
-          </a>
+          </Link>
         ))}
       </PopoverContent>
     </Popover>

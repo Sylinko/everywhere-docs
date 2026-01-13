@@ -263,13 +263,13 @@ export default async function Page({
         <Hero />
         <div className="z-2 flex size-full flex-col px-4 max-md:items-center max-md:text-center md:p-12">
           <div className="mt-12 flex w-fit flex-row flex-wrap items-center justify-center gap-2">
-            <p className="border-brand/50 text-brand w-fit rounded-full border pt-1 pr-2 pb-1 pl-2 text-s font-medium">
+            <p className="border-brand/50 text-brand text-s w-fit rounded-full border pt-1 pr-2 pb-1 pl-2 font-medium">
               {content.badges[0]}
             </p>
-            <p className="border-brand/50 text-brand w-fit rounded-full border pt-1 pr-2 pb-1 pl-2 text-s font-medium">
+            <p className="border-brand/50 text-brand text-s w-fit rounded-full border pt-1 pr-2 pb-1 pl-2 font-medium">
               {content.badges[1]}
             </p>
-            <p className="border-brand/50 text-brand w-fit rounded-full border pt-1 pr-2 pb-1 pl-2 text-s font-medium">
+            <p className="border-brand/50 text-brand text-s w-fit rounded-full border pt-1 pr-2 pb-1 pl-2 font-medium">
               {content.badges[2]}
             </p>
           </div>
@@ -287,20 +287,20 @@ export default async function Page({
               <BookOpen className="size-4" />
               {content.getStarted}
             </Link>
-            <a
+            <Link
               href={getLocalePath(lang, 'download')}
               className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
             >
               <Download className="size-4" />
               {content.download}
-            </a>
-            <a
+            </Link>
+            <Link
               href={getLocalePath(lang, 'docs')}
               className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
             >
               <BookText className="size-4" />
               {content.docs}
-            </a>
+            </Link>
           </div>
         </div>
       </div>

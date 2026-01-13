@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { cn } from '@/lib/cn'; // Assuming cn utility exists here
 import { cardVariants } from './variants';
 import { GithubIcon } from '@/components/icons';
-import { Heart } from 'lucide-react';
 
 // --- Types ---
 
@@ -74,7 +73,8 @@ export const CoreTeamCard: React.FC<CoreTeamCardProps> = ({
   links,
   className,
 }) => {
-  const displayAvatar = avatar ?? (github ? `https://github.com/${github}.png` : '');
+  const displayAvatar =
+    avatar ?? (github ? `https://github.com/${github}.png` : '');
   const displayName = name ?? github;
 
   return (
@@ -85,7 +85,7 @@ export const CoreTeamCard: React.FC<CoreTeamCardProps> = ({
         className
       )}
     >
-      <div className="relative size-16 overflow-hidden rounded-full mt-3">
+      <div className="relative mt-3 size-16 overflow-hidden rounded-full">
         {displayAvatar && (
           <Image
             src={displayAvatar}
@@ -96,15 +96,15 @@ export const CoreTeamCard: React.FC<CoreTeamCardProps> = ({
           />
         )}
       </div>
-      
+
       <div className="flex flex-col">
-        <h3 className="text-lg font-semibold mt-4 mb-1">{displayName}</h3>
+        <h3 className="mt-4 mb-1 text-lg font-semibold">{displayName}</h3>
         <p className="text-fd-muted-foreground text-sm">{role}</p>
       </div>
 
-      <div className="flex items-center gap-4 mb-6">
+      <div className="mb-6 flex items-center gap-4">
         {links.map((link, idx) => (
-          <a
+          <Link
             key={idx}
             href={link.href}
             target="_blank"
@@ -113,7 +113,7 @@ export const CoreTeamCard: React.FC<CoreTeamCardProps> = ({
             aria-label={link.label}
           >
             {link.icon}
-          </a>
+          </Link>
         ))}
       </div>
     </div>
@@ -132,9 +132,11 @@ export const CommunityMemberCard: React.FC<CommunityMemberCardProps> = ({
   githubUrl,
   className,
 }) => {
-  const displayAvatar = avatar ?? (github ? `https://github.com/${github}.png` : '');
+  const displayAvatar =
+    avatar ?? (github ? `https://github.com/${github}.png` : '');
   const displayName = name ?? github;
-  const displayUrl = githubUrl ?? (github ? `https://github.com/${github}` : '#');
+  const displayUrl =
+    githubUrl ?? (github ? `https://github.com/${github}` : '#');
 
   return (
     <div
@@ -156,15 +158,15 @@ export const CommunityMemberCard: React.FC<CommunityMemberCardProps> = ({
         )}
       </div>
       <div className="flex flex-1 flex-col justify-between gap-1">
-        <div className="font-medium text-lg">{displayName}</div>
-        <a
+        <div className="text-lg font-medium">{displayName}</div>
+        <Link
           href={displayUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-muted-foreground hover:text-foreground transition-colors"
         >
           {GithubIcon}
-        </a>
+        </Link>
       </div>
     </div>
   );
@@ -180,34 +182,39 @@ export const SponsorCard: React.FC<SponsorCardProps> = ({
   sponsor,
   className,
 }) => {
-  const displayAvatar = sponsor.avatar ?? (sponsor.login ? `https://github.com/${sponsor.login}.png` : '');
+  const displayAvatar =
+    sponsor.avatar ??
+    (sponsor.login ? `https://github.com/${sponsor.login}.png` : '');
   const displayName = sponsor.name ?? sponsor.login;
-  const displayUrl = sponsor.url ?? (sponsor.login ? `https://github.com/${sponsor.login}` : '#');
-  
-  let sourceLabel = "";
-  let sourceClassName = "";
+  const displayUrl =
+    sponsor.url ??
+    (sponsor.login ? `https://github.com/${sponsor.login}` : '#');
+
+  let sourceLabel = '';
+  let sourceClassName = '';
   if (sponsor.source === 'afdian') {
     sourceLabel = '爱发电';
-    sourceClassName = "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300";
+    sourceClassName =
+      'bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-300';
   } else {
     sourceLabel = '';
-    sourceClassName = "";
+    sourceClassName = '';
   }
 
   return (
     <Link
-        href={displayUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={cn(
-            cardVariants(),
-            // Override padding for small size
-            'flex flex-row items-center gap-3 p-3 transition-colors hover:bg-fd-accent/50',
-            className
-        )}
+      href={displayUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={cn(
+        cardVariants(),
+        // Override padding for small size
+        'hover:bg-fd-accent/50 flex flex-row items-center gap-3 p-3 transition-colors',
+        className
+      )}
     >
-      <div className="relative size-8 shrink-0 overflow-hidden rounded-full border bg-muted flex items-center justify-center">
-         {/* Handle cases where avatar might be empty or broken? assuming provided */}
+      <div className="bg-muted relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full border">
+        {/* Handle cases where avatar might be empty or broken? assuming provided */}
         {displayAvatar ? (
           <Image
             src={displayAvatar}
@@ -217,17 +224,19 @@ export const SponsorCard: React.FC<SponsorCardProps> = ({
             unoptimized
           />
         ) : (
-            <div className="text-xs text-muted-foreground">?</div>
+          <div className="text-muted-foreground text-xs">?</div>
         )}
       </div>
-      <div className="flex flex-col overflow-hidden min-w-0 gap-0.5">
-        <span className="truncate text-sm font-medium leading-none">
-            {displayName}
+      <div className="flex min-w-0 flex-col gap-0.5 overflow-hidden">
+        <span className="truncate text-sm leading-none font-medium">
+          {displayName}
         </span>
         {sourceLabel && sponsor.source !== 'manual' && (
-            <span className={`mt-1 text-xs leading-none w-fit px-1.5 py-0.5 rounded-full ${sourceClassName}`}>
-             {sourceLabel}
-            </span>
+          <span
+            className={`mt-1 w-fit rounded-full px-1.5 py-0.5 text-xs leading-none ${sourceClassName}`}
+          >
+            {sourceLabel}
+          </span>
         )}
       </div>
     </Link>
@@ -235,45 +244,57 @@ export const SponsorCard: React.FC<SponsorCardProps> = ({
 };
 
 export const SponsorList: React.FC = () => {
-    const [sponsors, setSponsors] = useState<Sponsor[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+  const [sponsors, setSponsors] = useState<Sponsor[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
-    useEffect(() => {
-        const fetchSponsors = async () => {
-            try {
-                const response = await fetch('https://sponsor-api.sylinko.com/');
-                if (!response.ok) throw new Error('Failed to fetch');
-                const data: SponsorResponse = await response.json();
+  useEffect(() => {
+    const fetchSponsors = async () => {
+      try {
+        const response = await fetch('https://sponsor-api.sylinko.com/');
+        if (!response.ok) throw new Error('Failed to fetch');
+        const data: SponsorResponse = await response.json();
 
-                const afdianSponsors = (data.data.afdian || []).map(s => ({ ...s, source: 'afdian' as const }));
-                const manualSponsors = (data.data.manual || []).map(s => ({ ...s, source: 'manual' as const }));
+        const afdianSponsors = (data.data.afdian || []).map((s) => ({
+          ...s,
+          source: 'afdian' as const,
+        }));
+        const manualSponsors = (data.data.manual || []).map((s) => ({
+          ...s,
+          source: 'manual' as const,
+        }));
 
-                setSponsors([...manualSponsors, ...afdianSponsors]);
-            } catch (e) {
-                console.error(e);
-                setError(true);
-            } finally {
-                setLoading(false);
-            }
-        };
+        setSponsors([...manualSponsors, ...afdianSponsors]);
+      } catch (e) {
+        console.error(e);
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        fetchSponsors();
-    }, []);
+    fetchSponsors();
+  }, []);
 
-    if (loading) {
-        return <div className="text-center text-muted-foreground animate-pulse">Loading contributors...</div>;
-    }
-
-    if (error) {
-        return <div className="text-center text-red-500">Failed to load sponsors.</div>;
-    }
-
+  if (loading) {
     return (
-        <div className="flex flex-wrap gap-2">
-            {sponsors.map((sponsor, idx) => (
-                <SponsorCard key={`${sponsor.url}-${idx}`} sponsor={sponsor} />
-            ))}
-        </div>
+      <div className="text-muted-foreground animate-pulse text-center">
+        Loading contributors...
+      </div>
     );
+  }
+
+  if (error) {
+    return (
+      <div className="text-center text-red-500">Failed to load sponsors.</div>
+    );
+  }
+
+  return (
+    <div className="flex flex-wrap gap-2">
+      {sponsors.map((sponsor, idx) => (
+        <SponsorCard key={`${sponsor.url}-${idx}`} sponsor={sponsor} />
+      ))}
+    </div>
+  );
 };

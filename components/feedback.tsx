@@ -9,6 +9,7 @@ import {
 } from 'fumadocs-ui/components/ui/collapsible';
 import { cva } from 'class-variance-authority';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const rateButtonVariants = cva(
   'inline-flex items-center gap-2 px-3 py-2 rounded-full font-medium border text-sm [&_svg]:size-4 disabled:cursor-not-allowed cursor-pointer transition-colors',
@@ -71,7 +72,8 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
   const [message, setMessage] = useState('');
   const [isPending, startTransition] = useTransition();
 
-  const t = translations[lang as keyof typeof translations] || translations['en-US'];
+  const t =
+    translations[lang as keyof typeof translations] || translations['en-US'];
 
   useEffect(() => {
     const item = localStorage.getItem(`docs-feedback-${url}`);
@@ -160,8 +162,8 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
           <div className="bg-fd-card text-fd-muted-foreground flex flex-col items-center gap-3 rounded-xl px-3 py-6 text-center text-sm">
             <p>{t.thanks}</p>
             <div className="flex flex-row items-center gap-2">
-              <a
-                href={previous.response?.githubUrl}
+              <Link
+                href={previous.response?.githubUrl || '#'}
                 rel="noreferrer noopener"
                 target="_blank"
                 className={cn(
@@ -172,7 +174,7 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
                 )}
               >
                 {t.viewOnGitHub}
-              </a>
+              </Link>
 
               <button
                 className={cn(

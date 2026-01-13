@@ -6,7 +6,12 @@ import { i18n } from '@/lib/i18n';
 import type { Metadata } from 'next';
 import { DownloadAutoDetect } from './download-auto-detect';
 import { DynamicLink } from 'fumadocs-core/dynamic-link';
-import { WindowsIcon, AppleIcon, LinuxIcon, GithubIcon } from '@/components/icons';
+import {
+  WindowsIcon,
+  AppleIcon,
+  LinuxIcon,
+  GithubIcon,
+} from '@/components/icons';
 
 const DOWNLOAD_LINKS = {
   windows: {
@@ -97,7 +102,7 @@ const contentMap = {
       action: '下载',
       distros: [
         { name: '便携版', note: '.zip', key: 'portable' },
-        { name: '安装包', note: '.exe', key: 'installer' }
+        { name: '安装包', note: '.exe', key: 'installer' },
       ],
     },
     macos: {
@@ -247,10 +252,9 @@ export default async function Page({
                   )}
                 >
                   {platform.data.distros.map((distro, i) => {
-                    const platformLinks =
-                      DOWNLOAD_LINKS[
-                        platform.id as keyof typeof DOWNLOAD_LINKS
-                      ] as Record<string, string>;
+                    const platformLinks = DOWNLOAD_LINKS[
+                      platform.id as keyof typeof DOWNLOAD_LINKS
+                    ] as Record<string, string>;
                     const href =
                       platformLinks[distro.key as keyof typeof platformLinks] ||
                       '#';

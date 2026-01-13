@@ -4,19 +4,19 @@ A documentation site for Everywhere, built with [Next.js](https://nextjs.org) an
 
 ## 🚀 Key Features
 
-*   **Framework:** Built on [Next.js 16 (App Router)](https://nextjs.org), leveraging React Server Components.
-*   **Documentation:** Powered by [Fumadocs](https://fumadocs.dev), offering a robust MDX-based documentation workflow.
-*   **Styling:** Styled with [Tailwind CSS v4](https://tailwindcss.com) and `tailwindcss-animate` for a beautiful, responsive UI.
-*   **Icons:** Uses [Lucide React](https://lucide.dev) for consistent and crisp iconography.
-*   **Internationalization:** Built-in support for multiple languages (e.g., English, Simplified Chinese).
-*   **Search:** Integrated search functionality for quick navigation.
+- **Framework:** Built on [Next.js 16 (App Router)](https://nextjs.org), leveraging React Server Components.
+- **Documentation:** Powered by [Fumadocs](https://fumadocs.dev), offering a robust MDX-based documentation workflow.
+- **Styling:** Styled with [Tailwind CSS v4](https://tailwindcss.com) and `tailwindcss-animate` for a beautiful, responsive UI.
+- **Icons:** Uses [Lucide React](https://lucide.dev) for consistent and crisp iconography.
+- **Internationalization:** Built-in support for multiple languages (e.g., English, Simplified Chinese).
+- **Search:** Integrated search functionality for quick navigation.
 
 ## 🛠️ Tech Stack
 
-*   **Core:** TypeScript, React, Next.js
-*   **Content:** MDX (Fumadocs MDX)
-*   **UI/UX:** Tailwind CSS, Radix UI (via Fumadocs UI)
-*   **Package Manager:** pnpm
+- **Core:** TypeScript, React, Next.js
+- **Content:** MDX (Fumadocs MDX)
+- **UI/UX:** Tailwind CSS, Radix UI (via Fumadocs UI)
+- **Package Manager:** pnpm
 
 ## 📂 Project Structure
 
@@ -42,12 +42,13 @@ everywhere-docs
 
 Ensure you have the following installed:
 
-*   Node.js (LTS version recommended)
-*   pnpm (Project package manager)
+- Node.js (LTS version recommended)
+- pnpm (Project package manager)
 
 ### Installation
 
 1.  Clone the repository:
+
     ```bash
     git clone https://github.com/Sylinko/everywhere-docs.git
     cd everywhere-docs
@@ -86,9 +87,9 @@ To start the production server:
 
 We maintain high code quality standards using ESLint and Prettier.
 
-*   **Lint:** `pnpm lint` (Checks for code issues)
-*   **Format:** `pnpm format` (Formats code with Prettier)
-*   **Type Check:** `pnpm types:check` (Runs TypeScript type checking)
+- **Lint:** `pnpm lint` (Checks for code issues)
+- **Format:** `pnpm format` (Formats code with Prettier)
+- **Type Check:** `pnpm types:check` (Runs TypeScript type checking)
 
 ## 🤝 Contributing
 

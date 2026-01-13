@@ -83,7 +83,6 @@ function detectShaderProfile(): ShaderProfile {
 export function Hero() {
   const { resolvedTheme } = useTheme();
   const [showShaders, setShowShaders] = useState(false);
-  const [imageReady, setImageReady] = useState(false);
   const [logoReady, setLogoReady] = useState(false);
   const [mounted, setMounted] = useState(false);
   // Avoid hydration mismatch: the first client render must match SSR output.
@@ -147,12 +146,12 @@ export function Hero() {
 
       {showShaders && (
         <FluidMaskedGradient
-          className={cn(
-            'absolute inset-0 animate-fd-fade-in',
-          )}
-          colors={resolvedTheme === 'dark' ? 
-            ["#3183c6", "#cfc984", "#c12a8c"] : 
-            ["#74b8ef", "#edeac7", "#eb65bc"]}
+          className={cn('animate-fd-fade-in absolute inset-0')}
+          colors={
+            resolvedTheme === 'dark'
+              ? ['#3183c6', '#cfc984', '#c12a8c']
+              : ['#74b8ef', '#edeac7', '#eb65bc']
+          }
         />
       )}
 
@@ -392,7 +391,7 @@ export function SponsorsSection({
         {/* Left: SVGs */}
         <div className="grid grid-cols-2 gap-4">
           {sponsors.map((sponsor, idx) => (
-            <a
+            <Link
               key={idx}
               href={sponsor.link}
               target="_blank"
@@ -425,7 +424,7 @@ export function SponsorsSection({
                   className="sponsor-img auto-gray object-contain"
                 />
               )}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -494,11 +493,7 @@ export function BoundlessSection({
               <p className="text-muted-foreground text-md leading-relaxed">
                 {item.desc}
               </p>
-              {item.warn && (
-                <p className="text-sm font-medium">
-                  {item.warn}
-                </p>
-              )}
+              {item.warn && <p className="text-sm font-medium">{item.warn}</p>}
             </div>
 
             {/* Image Side - Placeholder */}

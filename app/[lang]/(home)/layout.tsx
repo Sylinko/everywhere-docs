@@ -18,7 +18,6 @@ import {
   HelpCircle,
   type LucideIcon,
   Download,
-  Gem,
   Users,
 } from 'lucide-react';
 import { getLocalePath } from '@/lib/i18n';

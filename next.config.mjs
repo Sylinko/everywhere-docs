@@ -1,5 +1,5 @@
 import { createMDX } from 'fumadocs-mdx/next';
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
 
 initOpenNextCloudflareForDev();
 
@@ -13,7 +13,7 @@ const config = {
       { protocol: 'https', hostname: 'github.com' },
       { protocol: 'https', hostname: 'pic1.afdiancdn.com' },
     ],
-  }
+  },
 };
 
 export default withMDX(config);

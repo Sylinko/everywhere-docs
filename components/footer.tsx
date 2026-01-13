@@ -9,6 +9,7 @@ import {
 } from '@/components/icons';
 import { getLocalePath } from '@/lib/i18n';
 import Link from 'fumadocs-core/link';
+import { LicenseRepoUrl } from '@/lib/github';
 
 interface FooterProps {
   lang: string;
@@ -235,7 +236,7 @@ export function Footer({ lang }: FooterProps) {
               </h3>
               <div className="flex flex-wrap gap-4">
                 {communityLinks.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     target="_blank"
@@ -245,7 +246,7 @@ export function Footer({ lang }: FooterProps) {
                     title={item.name}
                   >
                     {item.icon}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -256,7 +257,7 @@ export function Footer({ lang }: FooterProps) {
               </h3>
               <div className="flex flex-wrap gap-4">
                 {followUsLinks.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     target="_blank"
@@ -266,7 +267,7 @@ export function Footer({ lang }: FooterProps) {
                     title={item.name}
                   >
                     {item.icon}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -279,24 +280,24 @@ export function Footer({ lang }: FooterProps) {
             </h3>
             <ul className="space-y-3">
               <li>
-                <a
+                <Link
                   href="https://afdian.tv/a/DearVa"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-fd-muted-foreground hover:text-fd-foreground text-sm transition-colors"
                 >
                   {t.sections.sponsorUs.afdian}
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="https://buymeacoffee.com/artemisli"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-fd-muted-foreground hover:text-fd-foreground text-sm transition-colors"
                 >
                   {t.sections.sponsorUs.buyMeACoffee}
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -309,14 +310,14 @@ export function Footer({ lang }: FooterProps) {
             <ul className="space-y-3">
               {relatedProjectLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-fd-muted-foreground hover:text-fd-foreground text-sm transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -353,14 +354,14 @@ export function Footer({ lang }: FooterProps) {
             <ul className="space-y-3">
               {sylinkoLinks.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-fd-muted-foreground hover:text-fd-foreground text-sm transition-colors"
                   >
                     {t.sections.aboutSylinko[link.key]}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -371,14 +372,14 @@ export function Footer({ lang }: FooterProps) {
         <div className="border-fd-border flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
           <p className="text-fd-muted-foreground text-xs">
             {t.license.prefix}
-            <a
-              href="https://github.com/DearVa/Everywhere/blob/main/LICENSE"
+            <Link
+              href={LicenseRepoUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-fd-foreground decoration-fd-muted-foreground/50 hover:decoration-fd-foreground underline transition-colors"
             >
               {t.license.linkText}
-            </a>
+            </Link>
             {t.license.suffix}
           </p>
           <p className="text-fd-muted-foreground text-xs">

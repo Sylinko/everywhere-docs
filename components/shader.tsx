@@ -294,7 +294,7 @@ const hexToRgba = (hex: string): number[] => {
 };
 
 export const FluidMaskedGradient: React.FC<FluidMaskedGradientProps> = ({
-  colors = ["#ff0000", "#00ff00", "#0000ff"],
+  colors = ['#ff0000', '#00ff00', '#0000ff'],
   style,
   className,
   dpi = 1.5,
@@ -316,7 +316,7 @@ export const FluidMaskedGradient: React.FC<FluidMaskedGradientProps> = ({
       gl.shaderSource(shader, source);
       gl.compileShader(shader);
       if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-        console.error("Shader Error:", gl.getShaderInfoLog(shader));
+        console.error('Shader Error:', gl.getShaderInfoLog(shader));
         gl.deleteShader(shader);
         return null;
       }
@@ -335,36 +335,38 @@ export const FluidMaskedGradient: React.FC<FluidMaskedGradientProps> = ({
     gl.useProgram(program);
 
     // --- Geometry ---
-    const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]);
+    const vertices = new Float32Array([
+      -1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1,
+    ]);
     const buffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
     gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
-    const positionLoc = gl.getAttribLocation(program, "a_position");
+    const positionLoc = gl.getAttribLocation(program, 'a_position');
     gl.enableVertexAttribArray(positionLoc);
     gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
 
     // --- Uniform Locations ---
-    const uTime = gl.getUniformLocation(program, "u_time");
-    const uResolution = gl.getUniformLocation(program, "u_resolution");
-    const uColors = gl.getUniformLocation(program, "u_colors");
-    const uColorsCount = gl.getUniformLocation(program, "u_colorsCount");
+    const uTime = gl.getUniformLocation(program, 'u_time');
+    const uResolution = gl.getUniformLocation(program, 'u_resolution');
+    const uColors = gl.getUniformLocation(program, 'u_colors');
+    const uColorsCount = gl.getUniformLocation(program, 'u_colorsCount');
     let w = 0;
     let h = 0;
 
     // --- Resize ---
     const handleResize = () => {
-        const pixelRatio = window.devicePixelRatio || 1;
-        const targetDpi = Math.min(pixelRatio, dpi);
-        const rect = canvas.getBoundingClientRect();
-        w = Math.floor(rect.width * targetDpi);
-        h = Math.floor(rect.height * targetDpi);
+      const pixelRatio = window.devicePixelRatio || 1;
+      const targetDpi = Math.min(pixelRatio, dpi);
+      const rect = canvas.getBoundingClientRect();
+      w = Math.floor(rect.width * targetDpi);
+      h = Math.floor(rect.height * targetDpi);
 
-        if (canvas.width !== w || canvas.height !== h) {
-            canvas.width = w;
-            canvas.height = h;
-            gl.viewport(0, 0, w, h);
-        }
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w;
+        canvas.height = h;
+        gl.viewport(0, 0, w, h);
+      }
     };
     window.addEventListener('resize', handleResize);
     handleResize();
@@ -377,7 +379,7 @@ export const FluidMaskedGradient: React.FC<FluidMaskedGradientProps> = ({
 
       // 2. Colors (Flattened)
       const flatColors: number[] = [];
-      colors.slice(0, 10).forEach(c => flatColors.push(...hexToRgba(c)));
+      colors.slice(0, 10).forEach((c) => flatColors.push(...hexToRgba(c)));
       // gl.uniform4fv handles the array automatically if we pass the Float32Array
       gl.uniform4fv(uColors, new Float32Array(flatColors));
       gl.uniform1i(uColorsCount, colors.length);
@@ -396,10 +398,10 @@ export const FluidMaskedGradient: React.FC<FluidMaskedGradientProps> = ({
   }, [colors, dpi]); // Dependencies strictly limited
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className={className}
-      style={{ width: '100%', height: '100%', display: 'block', ...style }} 
+      style={{ width: '100%', height: '100%', display: 'block', ...style }}
     />
   );
 };
