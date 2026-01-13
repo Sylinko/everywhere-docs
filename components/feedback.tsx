@@ -1,6 +1,6 @@
 'use client';
 import { cn } from '@/lib/cn';
-import { buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/common/variants';
 import { ThumbsDown, ThumbsUp } from 'lucide-react';
 import { type SyntheticEvent, useEffect, useState, useTransition } from 'react';
 import {
@@ -166,12 +166,7 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
                 href={previous.response?.githubUrl || '#'}
                 rel="noreferrer noopener"
                 target="_blank"
-                className={cn(
-                  buttonVariants({
-                    color: 'primary',
-                  }),
-                  'text-xs'
-                )}
+                className={cn(buttonVariants(), 'text-xs')}
               >
                 {t.viewOnGitHub}
               </Link>
@@ -179,7 +174,7 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
               <button
                 className={cn(
                   buttonVariants({
-                    color: 'secondary',
+                    variant: 'secondary',
                   }),
                   'text-xs'
                 )}
@@ -209,7 +204,10 @@ export function Feedback({ lang, onRateAction }: FeedbackProps) {
             />
             <button
               type="submit"
-              className={cn(buttonVariants({ color: 'outline' }), 'w-fit px-3')}
+              className={cn(
+                buttonVariants({ variant: 'outline' }),
+                'w-fit px-3'
+              )}
               disabled={isPending}
             >
               {t.submit}

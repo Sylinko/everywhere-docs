@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import { Download } from 'lucide-react';
-import { buttonVariants } from '@/components/variants';
+import { buttonVariants } from '@/components/common/variants';
 import { cn } from '@/lib/cn';
 import Link from 'next/link';
-import { WindowsIcon, AppleIcon, LinuxIcon } from '@/components/icons';
+import { WindowsIcon, AppleIcon, LinuxIcon } from '@/components/common/icons';
 
 interface OSInfo {
   id: 'windows' | 'macos' | 'linux' | 'unknown';

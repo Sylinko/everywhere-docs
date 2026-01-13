@@ -8,7 +8,7 @@ import {
   buttonVariants,
   cardVariants,
   headingVariants,
-} from '@/components/variants';
+} from '@/components/common/variants';
 import Link from 'next/link';
 import { cn } from '@/lib/cn';
 import { Monitor, Layers, Laptop, Box, ArrowRight } from 'lucide-react';

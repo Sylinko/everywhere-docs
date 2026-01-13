@@ -3,7 +3,7 @@ import { useMemo, useState } from 'react';
 import { Check, ChevronDown, Copy, ExternalLinkIcon } from 'lucide-react';
 import { cn } from '@/lib/cn';
 import { useCopyButton } from 'fumadocs-ui/utils/use-copy-button';
-import { buttonVariants } from '@/components/variants';
+import { buttonVariants } from '@/components/common/variants';
 import {
   Popover,
   PopoverContent,

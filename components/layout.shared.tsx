@@ -1,7 +1,7 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import Image from 'next/image';
 import { i18n, getLocalePath } from '../lib/i18n';
-import { GithubIcon, DiscordIcon, QQIcon } from './icons';
+import { GithubIcon, DiscordIcon, QQIcon } from './common/icons';
 
 export const linkItems = [
   {

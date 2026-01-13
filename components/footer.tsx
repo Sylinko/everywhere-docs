@@ -6,7 +6,7 @@ import {
   BilibiliIcon,
   YoutubeIcon,
   XiaohongshuIcon,
-} from '@/components/icons';
+} from '@/components/common/icons';
 import { getLocalePath } from '@/lib/i18n';
 import Link from 'fumadocs-core/link';
 import { LicenseRepoUrl } from '@/lib/github';

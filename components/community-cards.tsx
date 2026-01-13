@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { cn } from '@/lib/cn'; // Assuming cn utility exists here
-import { cardVariants } from './variants';
-import { GithubIcon } from '@/components/icons';
+import { cardVariants } from './common/variants';
+import { GithubIcon } from '@/components/common/icons';
 
 // --- Types ---
 
@@ -61,6 +61,36 @@ interface SponsorResponse {
 
 // --- Components ---
 
+const AvatarImage = ({
+  src,
+  alt,
+  className,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+}) => {
+  const [loading, setLoading] = useState(true);
+
+  return (
+    <>
+      {loading && <div className="bg-muted absolute inset-0 animate-pulse" />}
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        className={cn(
+          'object-cover transition-opacity duration-300',
+          loading ? 'opacity-0' : 'opacity-100',
+          className
+        )}
+        unoptimized
+        onLoad={() => setLoading(false)}
+      />
+    </>
+  );
+};
+
 /**
  * Core Team Member Card
  * Vertical layout: Avatar -> Username -> Role -> Social Links -> Sponsor Button
@@ -87,13 +117,7 @@ export const CoreTeamCard: React.FC<CoreTeamCardProps> = ({
     >
       <div className="relative mt-3 size-16 overflow-hidden rounded-full">
         {displayAvatar && (
-          <Image
-            src={displayAvatar}
-            alt={displayName || 'User'}
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          <AvatarImage src={displayAvatar} alt={displayName || 'User'} />
         )}
       </div>
 
@@ -148,13 +172,7 @@ export const CommunityMemberCard: React.FC<CommunityMemberCardProps> = ({
     >
       <div className="relative size-16 shrink-0 overflow-hidden rounded-full">
         {displayAvatar && (
-          <Image
-            src={displayAvatar}
-            alt={displayName || 'Member'}
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          <AvatarImage src={displayAvatar} alt={displayName || 'Member'} />
         )}
       </div>
       <div className="flex flex-1 flex-col justify-between gap-1">
@@ -216,13 +234,7 @@ export const SponsorCard: React.FC<SponsorCardProps> = ({
       <div className="bg-muted relative flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full border">
         {/* Handle cases where avatar might be empty or broken? assuming provided */}
         {displayAvatar ? (
-          <Image
-            src={displayAvatar}
-            alt={displayName || 'Sponsor'}
-            fill
-            className="object-cover"
-            unoptimized
-          />
+          <AvatarImage src={displayAvatar} alt={displayName || 'Sponsor'} />
         ) : (
           <div className="text-muted-foreground text-xs">?</div>
         )}

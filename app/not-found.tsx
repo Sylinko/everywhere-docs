@@ -1,6 +1,7 @@
 'use client';
 
-import { buttonVariants } from '@/components/ui/button';
+import { buttonVariants } from '@/components/common/variants';
+import { getLocalePath } from '@/lib/i18n';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -36,9 +37,8 @@ export default function NotFound() {
         {content.description}
       </p>
       <Link
-        href={`/${lang}/`}
+        href={getLocalePath(lang, '/')}
         className={buttonVariants({
-          color: 'primary',
           className: 'w-full sm:w-auto',
         })}
       >

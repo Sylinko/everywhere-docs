@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Clock } from 'lucide-react';
-import { buttonVariants, cardVariants } from '@/components/variants';
+import { buttonVariants, cardVariants } from '@/components/common/variants';
 import { cn } from '@/lib/cn';
 import { i18n } from '@/lib/i18n';
 import type { Metadata } from 'next';
@@ -11,7 +11,7 @@ import {
   AppleIcon,
   LinuxIcon,
   GithubIcon,
-} from '@/components/icons';
+} from '@/components/common/icons';
 
 const DOWNLOAD_LINKS = {
   windows: {

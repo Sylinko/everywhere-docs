@@ -1,6 +1,11 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import type { Viewport, Metadata } from 'next';
+import { Noto_Sans } from 'next/font/google';
 import './global.css';
+
+const notoSans = Noto_Sans({
+  subsets: ['latin'],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://everywhere.sylinko.com'),
@@ -20,7 +25,7 @@ export const viewport: Viewport = {
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={notoSans.className}>
       <head>
         <meta charSet="utf-8" />
       </head>
