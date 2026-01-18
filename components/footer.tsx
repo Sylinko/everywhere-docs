@@ -5,6 +5,7 @@ import {
   ProductHuntIcon,
   BilibiliIcon,
   YoutubeIcon,
+  XIcon,
   XiaohongshuIcon,
 } from '@/components/common/icons';
 import { getLocalePath } from '@/lib/i18n';
@@ -49,6 +50,11 @@ const followUsLinks: { name: string; href: string; icon: React.ReactNode }[] = [
     name: 'Youtube',
     href: 'https://www.youtube.com/@everywhere_official',
     icon: YoutubeIcon,
+  },
+  {
+    name: 'X',
+    href: 'https://x.com/everywhere_team',
+    icon: XIcon,
   },
   {
     name: 'Xiaohongshu',

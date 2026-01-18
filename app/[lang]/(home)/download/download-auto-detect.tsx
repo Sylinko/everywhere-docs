@@ -172,7 +172,7 @@ export function DownloadAutoDetect({
           </button>
 
           {showVariants && (
-            <div className="animate-in fade-in slide-in-from-top-2 absolute top-8 flex min-w-max flex-col gap-2 rounded-xl border bg-background p-3 shadow-lg duration-200">
+            <div className="animate-in fade-in slide-in-from-top-2 bg-background absolute top-8 flex min-w-max flex-col gap-2 rounded-xl border p-3 shadow-lg duration-200">
               {os.otherVariants.map((variant) => (
                 <Link
                   key={variant.key}

@@ -31,7 +31,11 @@ const contentMap = {
       variants: {
         windows: { installer: 'Installer', portable: 'Portable' },
         macos: { silicon: 'Apple Silicon (M Series)', intel: 'Intel (x64)' },
-        linux: { deb: 'Debian / Ubuntu', rpm: 'Fedora / RedHat', aur: 'Arch Linux' },
+        linux: {
+          deb: 'Debian / Ubuntu',
+          rpm: 'Fedora / RedHat',
+          aur: 'Arch Linux',
+        },
       },
     },
     comingSoon: 'Coming Soon',
@@ -85,7 +89,11 @@ const contentMap = {
       variants: {
         windows: { installer: '安装包', portable: '便携版' },
         macos: { silicon: 'Apple Silicon (M 系列)', intel: 'Intel (x64)' },
-        linux: { deb: 'Debian / Ubuntu', rpm: 'Fedora / RedHat', aur: 'Arch Linux' },
+        linux: {
+          deb: 'Debian / Ubuntu',
+          rpm: 'Fedora / RedHat',
+          aur: 'Arch Linux',
+        },
       },
     },
     comingSoon: '敬请期待',
