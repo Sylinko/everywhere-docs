@@ -6,15 +6,19 @@ icon: Download
 import { getLocalePath } from '@/lib/i18n';
 
 <Callout type="info">
-Everywhere 是一个开源项目，可以直接在 Github 上下载并使用。
+Everywhere 是一个开源项目，可以直接在 GitHub 上下载并使用。
 </Callout>
 
 ## 系统环境
 
-目前，Everywhere 仅支持 Windows 平台，最低系统版本要求为 10.0.19041.0。
+目前，Everywhere 支持 Windows 和 macOS 平台。
 
-<Callout type="warning" title="macOS 支持">
-macOS 版本正在进行 alpha 测试，近期将会发布。
+<Callout type="info" title="Windows 支持">
+Windows 版本支持 Windows 10 (19041) 及更高版本。
+</Callout>
+
+<Callout type="info" title="macOS 支持">
+macOS 版本支持 macOS Monterey 12.0 及更高版本，且仅在 Apple Silicon 芯片上通过测试。
 </Callout>
 
 <Callout type="warning" title="Linux 支持">
@@ -38,21 +42,13 @@ Linux 版本由社区维护并开发中。
     </Card>
 </Cards>
 
-在每个发行版中，您可以下载到安装版(`.exe`)或便携版(`.zip`)，两个版本除了打包方式不同外无其他区别。
+## Windows 安装说明
 
-- 安装版的文件名是`Everywhere-Windows-x64-Setup-v<版本号>.exe`
+您可以下载到安装版(`.exe`)或便携版(`.zip`)，两个版本除了打包方式不同外无其他区别。
 
-<Callout type="warning">
-安装版的安装向导会自动创建和修改注册表项，用于记录软件的安装信息
+- 安装版的文件名是`Everywhere-Windows-x64-Setup-v<版本号>.exe`，在下载后需要双击运行安装向导，如果遇到 UAC (用户帐户控制) 提示，请选择“是”以允许安装程序继续运行。
+- 便携版的文件名是`Everywhere-Windows-x64-v<版本号>.zip`，文件下载后需要解压缩到一个文件夹中，然后直接运行其中的`Everywhere.Windows.exe`即可。
+
+<Callout type="info" title="数据存储位置">
+无论是安装版还是便携版，Everywhere 的用户数据（如设置、聊天历史等）都会存储在用户的应用数据目录中，通常位于`C:\Users\<用户名>\AppData\Roaming\Everywhere`。
 </Callout>
-
-- 便携版的文件名是`Everywhere-Windows-x64-v<版本号>.zip`
-
-<Callout type="warning">
-便携版及其软件本体不会操作注册表
-</Callout>
-
-## 安装
-
-- 安装版的`.exe`在下载后需要双击运行安装向导，如果遇到 UAC (用户帐户控制) 提示，请选择“是”以允许安装程序继续运行。
-- 便携版的`.zip`文件下载后需要解压缩到一个文件夹中，然后直接运行其中的`Everywhere.Windows.exe`即可。

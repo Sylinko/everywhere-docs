@@ -50,7 +50,7 @@ const contentMap = {
     },
     macos: {
       title: 'macOS',
-      desc: 'Native support for Apple Silicon and Intel.',
+      desc: 'Requires macOS Monterey 12.0 or later.',
       action: 'Download',
       distros: [
         { name: 'Apple Silicon (for M Series)', note: '.pkg', key: 'silicon' },
@@ -108,7 +108,7 @@ const contentMap = {
     },
     macos: {
       title: 'macOS',
-      desc: '原生支持 Apple Silicon 和 Intel 芯片。',
+      desc: '需要 macOS Monterey 12.0 或更高版本。',
       action: '下载',
       distros: [
         { name: 'Apple Silicon (M 系列芯片)', note: '.pkg', key: 'silicon' },

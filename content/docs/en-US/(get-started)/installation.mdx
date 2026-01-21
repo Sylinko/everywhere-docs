@@ -6,15 +6,19 @@ icon: Download
 import { getLocalePath } from '@/lib/i18n';
 
 <Callout type="info">
-Everywhere is an open-source project that can be downloaded and used directly from Github.
+Everywhere is an open-source project that can be downloaded and used directly from GitHub.
 </Callout>
 
 ## System Requirements
 
-Currently, Everywhere only supports the Windows platform. (Minimum required version: 10.0.19041.0)
+Currently, Everywhere supports Windows and macOS platforms.
 
-<Callout type="warning" title="macOS Support">
-macOS version is under alpha testing and will be released in the near future.
+<Callout type="info" title="Windows Support">
+Windows version supports Windows 10 (19041) and later.
+</Callout>
+
+<Callout type="info" title="macOS Support">
+macOS version supports macOS Monterey 12.0 and later, and has only been tested on Apple Silicon chips.
 </Callout>
 
 <Callout type="warning" title="Linux Support">
@@ -38,21 +42,13 @@ Linux version is under development supported by our community.
     </Card>
 </Cards>
 
-In each release, you can download either the installer (`.exe`) or the portable (`.zip`) version. The two versions have no differences other than their packaging method.
+## Windows Installation Instructions
 
-- The installer filename is `Everywhere-Windows-x64-Setup-v<version number>.exe`
+You can download either the installer (`.exe`) or the portable version (`.zip`). The two versions differ only in their packaging method.
 
-<Callout type="warning">
-The installer's setup wizard will automatically create and modify registry keys to record software installation information.
+- The installer filename is `Everywhere-Windows-x64-Setup-v<version number>.exe`. After downloading, you need to double-click to run the setup wizard. If you encounter a UAC (User Account Control) prompt, please select "Yes" to allow the installer to continue running.
+- The portable filename is `Everywhere-Windows-x64-v<version number>.zip`. After downloading, you need to unzip the file into a folder, then directly run the `Everywhere.Windows.exe` inside.
+
+<Callout type="info" title="Data Storage Location">
+Regardless of whether you use the installer or the portable version, Everywhere's user data (such as settings, chat history, etc.) is stored in the user's application data directory, typically located at `C:\Users\<username>\AppData\Roaming\Everywhere`.
 </Callout>
-
-- The portable filename is `Everywhere-Windows-x64-v<version number>.zip`
-
-<Callout type="warning">
-The portable version and its software itself will not operate on the registry. version is under development and will be released in the future.
-</Callout>
-
-## Installation
-
-  - After downloading the installer's `.exe` file, you need to double-click to run the setup wizard. If you encounter a UAC (User Account Control) prompt, please select "Yes" to allow the installer to continue running.
-  - The portable `.zip` file needs to be unzipped into a folder after downloading, and then you can directly run the `Everywhere.Windows.exe` inside it.
