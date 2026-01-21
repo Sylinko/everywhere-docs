@@ -12,7 +12,6 @@ import {
 import Link from 'next/link';
 import { cn } from '@/lib/cn';
 import { Monitor, Layers, Laptop, Box, ArrowRight } from 'lucide-react';
-import { getLocalePath } from '@/lib/i18n';
 import DynamicLink from 'fumadocs-core/dynamic-link';
 
 const FluidMaskedGradient = dynamic(
@@ -248,13 +247,12 @@ export function ModelProviderSection({
   description,
   learnMoreDesc,
   models,
-  lang,
 }: {
   title: string;
   description: string;
   learnMoreDesc: string;
   models: {
-    iconUrl: string;
+    icon: React.ReactNode;
     link: string;
     title: string;
     inversedIconColor?: boolean;
@@ -332,7 +330,7 @@ export function ModelProviderSection({
                       rel="noopener noreferrer"
                     >
                       <div className="bg-card flex shrink-0 items-center justify-center gap-2 rounded-xl border px-4 py-2 shadow-sm">
-                        <Image
+                        {/* <Image
                           src={model.iconUrl}
                           alt={model.title}
                           width={16}
@@ -341,7 +339,8 @@ export function ModelProviderSection({
                             'size-5',
                             model.inversedIconColor && 'dark:invert dark:filter'
                           )}
-                        />
+                        /> */}
+                        {model.icon}
                         <span className="text-card-foreground text-sm font-medium">
                           {model.title}
                         </span>
@@ -518,7 +517,6 @@ export function CTASection({
   title,
   description,
   actionText,
-  lang,
 }: {
   title: string;
   description: string;

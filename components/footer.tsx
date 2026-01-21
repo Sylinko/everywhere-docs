@@ -98,9 +98,12 @@ const policyLinks: {
     href: '/policies/terms',
   },
   {
+    key: 'disclaimer',
+    href: '/policies/disclaimer',
+  },
+  {
     key: 'contributorLicenseAgreement',
-    href: 'https://github.com/DearVa/Everywhere/blob/main/CLA.md',
-    external: true,
+    href: '/policies/cla',
   },
 ];
 
@@ -122,6 +125,7 @@ interface FooterTranslation {
       title: string;
       privacyPolicy: string;
       termsOfService: string;
+      disclaimer: string;
       contributorLicenseAgreement: string;
     };
     aboutSylinko: {
@@ -138,7 +142,7 @@ interface FooterTranslation {
   copyright: {
     prefix: string;
     suffix: string;
-  };
+  }
 }
 
 const translations: Record<string, FooterTranslation> = {
@@ -160,6 +164,7 @@ const translations: Record<string, FooterTranslation> = {
         title: 'Legal & Policies',
         privacyPolicy: 'Privacy Policy',
         termsOfService: 'Terms of Service',
+        disclaimer: 'Disclaimer',
         contributorLicenseAgreement: 'Contributor License Agreement',
       },
       aboutSylinko: {
@@ -176,7 +181,7 @@ const translations: Record<string, FooterTranslation> = {
     copyright: {
       prefix: 'Copyright © ',
       suffix: ' Sylinko Inc. All rights reserved.',
-    },
+    }
   },
   'zh-CN': {
     sections: {
@@ -196,6 +201,7 @@ const translations: Record<string, FooterTranslation> = {
         title: '法律与政策',
         privacyPolicy: '隐私政策',
         termsOfService: '服务条款',
+        disclaimer: '免责声明',
         contributorLicenseAgreement: '贡献者许可协议',
       },
       aboutSylinko: {
@@ -212,7 +218,7 @@ const translations: Record<string, FooterTranslation> = {
     copyright: {
       prefix: '版权所有 © ',
       suffix: ' Sylinko Inc. 保留所有权利。',
-    },
+    }
   },
 };
 
@@ -367,25 +373,27 @@ export function Footer({ lang }: FooterProps) {
           </div>
         </div>
 
-        {/* Bottom: License and Copyright */}
-        <div className="border-fd-border flex flex-col items-center justify-between gap-4 border-t pt-8 sm:flex-row">
-          <p className="text-fd-muted-foreground text-xs">
-            {t.license.prefix}
-            <Link
-              href={LicenseRepoUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-fd-foreground decoration-fd-muted-foreground/50 hover:decoration-fd-foreground underline transition-colors"
-            >
-              {t.license.linkText}
-            </Link>
-            {t.license.suffix}
-          </p>
-          <p className="text-fd-muted-foreground text-xs">
-            {t.copyright.prefix}
-            {new Date().getFullYear()}
-            {t.copyright.suffix}
-          </p>
+        {/* Bottom: License, Copyright and Trademark Notice */}
+        <div className="border-fd-border flex flex-col items-center gap-4 border-t pt-8">
+          <div className="flex flex-col items-center justify-between gap-4 sm:flex-row w-full">
+            <p className="text-fd-muted-foreground text-xs">
+              {t.license.prefix}
+              <Link
+                href={LicenseRepoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-fd-foreground decoration-fd-muted-foreground/50 hover:decoration-fd-foreground underline transition-colors"
+              >
+                {t.license.linkText}
+              </Link>
+              {t.license.suffix}
+            </p>
+            <p className="text-fd-muted-foreground text-xs">
+              {t.copyright.prefix}
+              {new Date().getFullYear()}
+              {t.copyright.suffix}
+            </p>
+          </div>
         </div>
       </div>
     </footer>

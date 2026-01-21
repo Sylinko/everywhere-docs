@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { BookOpen, Download, BookText } from 'lucide-react';
 import {
   Hero,
@@ -8,8 +7,9 @@ import {
   BoundlessSection,
   CTASection,
 } from './page.client';
-import { getLocalePath, i18n } from '@/lib/i18n';
+import { i18n } from '@/lib/i18n';
 import { DynamicLink } from 'fumadocs-core/dynamic-link';
+import { AnthropicClaudeIcon, DeepSeekIcon, GoogleGeminiIcon, MoonshotKimiIcon, OllamaIcon, OpenAIIcon, SiliconCloudIcon } from '@/components/common/icons';
 
 const contentMap = {
   'en-US': {
@@ -196,47 +196,40 @@ export default async function Page({
 
   const modelProviders = [
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/openai.svg',
+      icon: OpenAIIcon,
       link: 'https://openai.com/',
       title: 'OpenAI',
       inversedIconColor: true,
     },
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/anthropic.svg',
+      icon: AnthropicClaudeIcon,
       link: 'https://claude.ai/',
       title: 'Anthropic (Claude)',
       inversedIconColor: true,
     },
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/google-color.svg',
+      icon: GoogleGeminiIcon,
       link: 'https://gemini.google.com/',
       title: 'Google (Gemini)',
     },
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/deepseek-color.svg',
+      icon: DeepSeekIcon,
       link: 'https://www.deepseek.com/',
       title: 'DeepSeek',
     },
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/moonshot.svg',
+      icon: MoonshotKimiIcon,
       link: 'https://www.kimi.com/',
       title: 'Moonshot (Kimi)',
       inversedIconColor: true,
     },
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/siliconcloud-color.svg',
+      icon: SiliconCloudIcon,
       link: 'https://www.siliconflow.cn/',
       title: 'SiliconCloud',
     },
     {
-      iconUrl:
-        'https://registry.npmmirror.com/@lobehub/icons-static-svg/latest/files/icons/ollama.svg',
+      icon: OllamaIcon,
       link: 'https://ollama.com/',
       title: 'Ollama',
       inversedIconColor: true,
