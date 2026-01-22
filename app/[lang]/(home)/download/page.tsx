@@ -162,7 +162,6 @@ export default async function Page({
       icon: WindowsIcon,
       name: 'Windows',
       data: content.windows,
-      link: 'https://github.com/DearVa/Everywhere/releases/latest',
       comingSoon: false,
     },
     {
@@ -170,7 +169,6 @@ export default async function Page({
       icon: AppleIcon,
       name: 'macOS',
       data: content.macos,
-      link: 'https://github.com/DearVa/Everywhere/releases',
       comingSoon: false,
     },
     {
@@ -178,7 +176,6 @@ export default async function Page({
       icon: LinuxIcon,
       name: 'Linux',
       data: content.linux,
-      link: 'https://github.com/DearVa/Everywhere/releases',
       comingSoon: true,
     },
   ];
@@ -196,14 +193,14 @@ export default async function Page({
           <div className="text-muted-foreground mb-10 text-sm">
             {content.policies.prefix}
             <DynamicLink
-              href="/[lang]/terms"
+              href="/[lang]/policies/terms"
               className="hover:text-foreground underline underline-offset-4"
             >
               {content.policies.terms}
             </DynamicLink>
             {content.policies.and}
             <DynamicLink
-              href="/[lang]/privacy"
+              href="/[lang]/policies/privacy"
               className="hover:text-foreground underline underline-offset-4"
             >
               {content.policies.privacy}
