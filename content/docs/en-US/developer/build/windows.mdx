@@ -52,15 +52,6 @@ Like the Everywhere runtime environment, building on Windows requires Windows 10
     ```
   </Step>
   <Step>
-    **Restore .NET Workloads**
-
-    .NET uses workloads to manage dependencies for specific platforms or features. Before building, make sure to restore the required workloads.
-
-    ```bash
-    dotnet workload restore
-    ```
-  </Step>
-  <Step>
     **Restore for Windows Platform**
 
     We use Solution Filter (`.slnf` files) to avoid loading unrelated platforms, processing only the projects required for the Windows platform.

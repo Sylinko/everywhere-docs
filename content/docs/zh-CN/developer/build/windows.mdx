@@ -53,15 +53,6 @@ import { Step, Steps } from 'fumadocs-ui/components/steps';
     ```
   </Step>
   <Step>
-    **还原 .NET 工作负载**
-
-    .NET 使用工作负载（Workload）来管理特定平台或功能的依赖项。在构建之前，请确保还原所需的工作负载。
-
-    ```bash
-    dotnet workload restore
-    ```
-  </Step>
-  <Step>
     **针对 Windows 平台进行还原**
 
     我们使用 Solution Filter (`.slnf` 文件) 来避免加载无关的平台，只针对 Windows 平台所需的项目进行处理。
