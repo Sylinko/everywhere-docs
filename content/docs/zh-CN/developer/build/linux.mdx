@@ -1,0 +1,154 @@
+---
+title: Linux 下的构建
+description: 在 Linux 系统上构建 Everywhere。
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+## 环境
+
+### 系统要求
+Linux 版本仍处于开发阶段，但已知的必需依赖如下：
+  - `fontconfig`
+  - `libx11`
+  - `libice`
+  - `libsm`
+  - `at-spi2-core`
+  - `hicolor-icon-theme`（图标主题，某些桌面环境依赖）
+
+*注意：不同发行版的包名可能略有差异。*
+
+您可以通过以下命令一键安装所需的系统库：
+
+<CodeBlockTabs defaultValue="debian">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="debian">Debian / Ubuntu</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="rhel">RHEL / CentOS</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="fedora">Fedora</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="arch">Arch / Manjaro</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="opensuse">openSUSE</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+
+  <CodeBlockTab value="debian">
+
+```bash
+sudo apt update && \
+sudo apt install -y fontconfig libx11-6 libice6 libsm6 at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="rhel">
+
+```bash
+sudo yum install -y fontconfig libX11 libICE libSM at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="fedora">
+
+```bash
+sudo dnf install -y fontconfig libX11 libICE libSM at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="arch">
+
+```bash
+sudo pacman -Sy --noconfirm fontconfig libx11 libice libsm at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="opensuse">
+
+```bash
+sudo zypper refresh && \
+sudo zypper install -y fontconfig libX11-6 libICE6 libSM6 at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+<Callout type="info" title=".NET 运行时">
+关于 `.NET` 运行时的安装与版本信息，请参见下方“核心组件”一节。
+</Callout>
+
+### 核心组件
+
+| 组件            | 推荐版本      | 说明                   | 相关链接                                                  |
+| --------------- | ------------ | --------------------- | --------------------------------------------------------- |
+| Git             | 最新发行版    | 克隆时支持 LFS 和子模块 | [Git 官网](https://git-scm.com/)                          |
+| .NET SDK        | 10 及以上     | 项目核心运行环境       | [.NET 官网](https://dotnet.microsoft.com/download)         |
+| JetBrains Rider | 2025.3 及以上 | 可选 IDE              | [Rider 官网](https://www.jetbrains.com/rider/)             |
+
+* *确保 IDE 支持 .NET 10*
+<Callout type="info" title=".NET 安装提示">
+想快速找到适配你发行版的安装指引？请查看：
+
+- [Linux 上安装 .NET（官方文档）](https://learn.microsoft.com/zh-cn/dotnet/core/install/linux?WT.mc_id=dotnet-35129-website)
+</Callout>
+
+
+
+### 配置
+
+- 初始化 Git LFS：
+
+  ```bash
+  git lfs install
+  ```
+## 构建
+
+<Steps>
+  <Step>
+    **克隆仓库**
+
+    Everywhere 使用 Git 子模块管理部分依赖项，因此请使用 `--recursive` 参数确保子模块被正确克隆。
+
+    ```bash
+    # 使用递归克隆
+    git clone https://github.com/DearVa/Everywhere.git --recursive
+    ```
+    如果你已经克隆了，但发现缺少文件夹或资源文件：
+    ```bash
+    git submodule update --init --recursive
+    git lfs pull
+    ```
+  </Step>
+  <Step>
+    **针对 Linux 平台进行还原**
+
+    我们使用 Solution Filter (`.slnf` 文件) 来避免加载无关的平台，只针对 Linux 平台所需的项目进行处理。
+
+    ```bash
+    dotnet restore Everywhere.Linux.slnf
+    ```
+    <Callout type="info" title="还原其他架构">
+    如果你需要为其他架构进行构建，如arm64，可以加上参数`-r linux-arm64`
+    </Callout>
+  </Step>
+  <Step>
+    **构建项目**
+
+    你可以选择使用 **命令行 (CLI)** 或 **JetBrains Rider** 来构建项目。
+
+    - **命令行 (CLI)**
+
+      ```bash
+      dotnet build Everywhere.Linux.slnf -c Debug
+      ```
+    - **JetBrains Rider**
+
+      打开 `Everywhere.Linux.slnf` 文件，等待项目加载完成后，在顶部菜单选择 **构建** -> **构建解决方案**。
+
+  </Step>
+</Steps>
+
+## 运行
+
+除了 IDE 本身提供的运行方式外，构建完成后，可执行文件会位于 `src/Everywhere.Linux/bin/Debug/net10.0/{对应的架构}/` 目录下。
+
+你可以直接运行 `Everywhere` 来启动应用程序。

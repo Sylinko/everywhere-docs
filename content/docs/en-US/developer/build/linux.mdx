@@ -1,0 +1,158 @@
+---
+title: Build on Linux
+description: Build Everywhere on Linux.
+---
+
+import { Step, Steps } from 'fumadocs-ui/components/steps';
+
+## Environment
+
+### System Requirements
+
+The Linux version is still in development, but the known required dependencies are as follows:
+
+- `fontconfig`
+- `libx11`
+- `libice`
+- `libsm`
+- `at-spi2-core`
+- `hicolor-icon-theme` (icon theme, required by some desktop environments)
+
+* *Note: Package names may vary slightly across different distributions.*
+
+You can install the required system libraries with the following commands:
+
+<CodeBlockTabs defaultValue="debian">
+  <CodeBlockTabsList>
+    <CodeBlockTabsTrigger value="debian">Debian / Ubuntu</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="rhel">RHEL / CentOS</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="fedora">Fedora</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="arch">Arch / Manjaro</CodeBlockTabsTrigger>
+    <CodeBlockTabsTrigger value="opensuse">openSUSE</CodeBlockTabsTrigger>
+  </CodeBlockTabsList>
+
+  <CodeBlockTab value="debian">
+
+```bash
+sudo apt update && \
+sudo apt install -y fontconfig libx11-6 libice6 libsm6 at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="rhel">
+
+```bash
+sudo yum install -y fontconfig libX11 libICE libSM at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="fedora">
+
+```bash
+sudo dnf install -y fontconfig libX11 libICE libSM at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="arch">
+
+```bash
+sudo pacman -Sy --noconfirm fontconfig libx11 libice libsm at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+
+  <CodeBlockTab value="opensuse">
+
+```bash
+sudo zypper refresh && \
+sudo zypper install -y fontconfig libX11-6 libICE6 libSM6 at-spi2-core hicolor-icon-theme
+```
+
+  </CodeBlockTab>
+</CodeBlockTabs>
+
+<Callout type="info" title=".NET Runtime">
+For information about installing and version details for the `.NET` runtime, please see the "Core Components" section below.
+</Callout>
+
+### Core Components
+
+| Component       | Recommended Version | Description            | Related Links                                            |
+| --------------- | ------------------- | ---------------------- | -------------------------------------------------------- |
+| Git             | Latest Release      | Supports LFS and submodules when cloning | [Git Official Site](https://git-scm.com/)               |
+| .NET SDK        | 10 or later         | Core runtime environment for the project | [.NET Official Site](https://dotnet.microsoft.com/download)         |
+| JetBrains Rider | 2025.3 or later     | Optional IDE           | [Rider Official Site](https://www.jetbrains.com/rider/)             |
+
+* *Ensure IDE supports .NET 10*
+
+<Callout type="info" title=".NET Installation Tips">
+Looking for installation guides adapted to your distribution? Check out:
+
+- [Install .NET on Linux (Official Documentation)](https://learn.microsoft.com/en-us/dotnet/core/install/linux)
+</Callout>
+
+
+
+### Configuration
+
+- Initialize Git LFS:
+
+  ```bash
+  git lfs install
+  ```
+
+## Build
+
+<Steps>
+  <Step>
+    **Clone the Repository**
+
+    Everywhere uses Git submodules to manage some dependencies, so please use the `--recursive` option to ensure submodules are cloned correctly.
+
+    ```bash
+    # Use recursive clone
+    git clone https://github.com/DearVa/Everywhere.git --recursive
+
+    # If you have already cloned but find missing folders or resource files:
+    git submodule update --init --recursive
+    git lfs pull
+    ```
+  </Step>
+  <Step>
+    **Restore for Linux Platform**
+
+    We use Solution Filter (`.slnf` files) to avoid loading unrelated platforms, processing only the projects required for the Linux platform.
+
+    ```bash
+    dotnet restore Everywhere.Linux.slnf
+    ```
+
+    <Callout type="info" title="Restore for Other Architectures">
+    If you need to build for other architectures such as arm64, you can add the parameter `-r linux-arm64`
+    </Callout>
+  </Step>
+  <Step>
+    **Build the Project**
+
+    You can choose to build the project using **Command Line (CLI)** or **JetBrains Rider**.
+
+    - **Command Line (CLI)**
+
+      ```bash
+      dotnet build Everywhere.Linux.slnf -c Debug
+      ```
+
+    - **JetBrains Rider**
+
+      Open the `Everywhere.Linux.slnf` file, wait for the project to load, then select **Build** -> **Build Solution** from the top menu.
+  </Step>
+</Steps>
+
+## Run
+
+Besides the running methods provided by the IDE itself, after the build is complete, the executable file will be located in the `src/Everywhere.Linux/bin/Debug/net10.0/{corresponding-architecture}/` directory.
+
+You can directly run `Everywhere` to start the application.
